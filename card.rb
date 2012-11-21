@@ -21,6 +21,8 @@ class Card
 
   def card_type
     case 
+    when begins_with?("6011") && length_being?(16)
+      return   "Discover"
     when begins_with?("34", "37") && length_being?(15)
       return   "AMEX"
     end
