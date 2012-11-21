@@ -21,6 +21,10 @@ class Card
 
   def card_type
     case 
+    when begins_with?("4") && (length_being?(13) || length_being?(16))
+      return   "Visa"
+    when begins_with?("51","52","53","54","55") && length_being?(16)
+      return   "MasterCard"
     when begins_with?("6011") && length_being?(16)
       return   "Discover"
     when begins_with?("34", "37") && length_being?(15)
