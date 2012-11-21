@@ -11,3 +11,7 @@ ruby myexample.rb
 or 
 
 ./myexample.rb (if the file is executable ie chmod +x myexample.rb)
+
+To execute Tests
+================
+bundle install & rake spec 
