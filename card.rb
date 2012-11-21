@@ -3,8 +3,16 @@ class Card
     @card_number = card_number.to_s.gsub(/\D/,"")
   end
 
-  def begins_with(number_of_digits)
-    @card_number[0..number_of_digits]
+  def first_digits(number_of_digits)
+    @card_number[0..(number_of_digits -1 )]
+  end
+
+  def begins_with?(*args)
+    return_value =false
+    args.each do |arg|
+      return_value =true if (first_digits(arg.length) == arg)
+    end
+    return_value
   end
 
   def length_being?(number_of_digits)
@@ -13,7 +21,7 @@ class Card
 
   def card_type
     case 
-    when ["34","37"].include?(begins_with(1)) && length_being?(15)
+    when begins_with?("34", "37") && length_being?(15)
       return   "AMEX"
     end
   end

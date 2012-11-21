@@ -2,12 +2,14 @@ require "#{File.dirname(__FILE__)}/spec_helper"
 
 describe Card do
   before do
-    @valid_card = "341234567890123"
+    @valid_cards = ["341234567890123","371234567890123"]
     @in_valid_card ="invalid_account_number"
   end
 
   it "for a valid AMEX card it should classify it as a AMEX cards" do
-    Card.new(@valid_card).card_type.should eq("AMEX")
+    @valid_cards.each do |valid_card|
+      Card.new(valid_card).card_type.should eq("AMEX")
+    end
   end
 
   it "for a invalid AMEX card it should not classify it as a AMEX cards" do
