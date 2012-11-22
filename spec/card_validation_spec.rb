@@ -8,31 +8,25 @@ describe "Card Validation" do
   end
 
   it  "for validated cards the return message is (valid)" do
-    Validation.any_instance.stub(:card_is_valid?).and_return(true)
-    card =Card.new("") 
-    Validation.new(card).to_s.should eq "(valid)"
+    Card.any_instance.stub(:card_is_valid?).and_return(true)
+    Card.new("").to_s.should eq "(valid)"
   end
 
   it  "for invalidated cards the return message is (valid)" do
-    Validation.any_instance.stub(:card_is_valid?).and_return(false)
-    card =Card.new("") 
-    Validation.new(card).to_s.should eq "(invalid)"
+    Card.any_instance.stub(:card_is_valid?).and_return(false)
+    Card.new("").to_s.should eq "(invalid)"
   end
   it "for an invalidated card doesn't passes the Luhn algorithm" do
-    card =Card.new(@invalid_card) 
-    Validation.new(card).luhn_algorithm.should_not eq (true)
+    Card.new(@invalid_card).luhn_algorithm.should_not eq (true)
   end
   it "for a validated card passes the Luhn algorithm" do
-    card =Card.new(@valid_card) 
-    Validation.new(card).luhn_algorithm.should eq (true)
+    Card.new(@valid_card).luhn_algorithm.should eq (true)
   end
   it "for a valided luhn algorithm and card type the card is valid" do 
-    card =Card.new(@valid_card) 
-    Validation.new(card).card_is_valid?.should eq (true)
+    Card.new(@valid_card).card_is_valid?.should eq (true)
   end
   it "for a valided luhn algorithm and invalid card type then the card is invalid" do 
-    card =Card.new(@in_valid_card_with_vaild_luhn) 
-    Validation.new(card).card_is_valid?.should_not eq (true)
+    Card.new(@in_valid_card_with_vaild_luhn).card_is_valid?.should_not eq (true)
   end
 
 end

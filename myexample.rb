@@ -29,9 +29,7 @@ class TerminalWindow
 
   def self.print_card_details(card_number, format = "%10s %20s %10s\n")
     card =Card.new(card_number)
-    card_type =CardType.new(card)
-    validation= Validation.new(card)
-    printf(format, card_type.name, card.number, validation.to_s)
+    printf(format, card.name, card.number, card.to_s)
   end
 
 

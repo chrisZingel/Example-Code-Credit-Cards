@@ -1,4 +1,3 @@
-
 module CardType 
   def name
     case 
@@ -21,7 +20,7 @@ module CardType
 
   private
   def first_digits(number_of_digits)
-    @card_number[0..(number_of_digits - 1 )]
+    number[0..(number_of_digits - 1 )]
   end
 
   def begins_with?(*args)
@@ -33,6 +32,6 @@ module CardType
   end
 
   def length_being?(number_of_digits)
-    @card_number.length == number_of_digits
+    number.length == number_of_digits
   end
 end
