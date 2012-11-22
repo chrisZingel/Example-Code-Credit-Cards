@@ -11,12 +11,12 @@ describe "Card classifications" do
 
     it "for a valid Visa card it should classify it as a Visa cards" do
       @valid_cards.each do |valid_card|
-        Card.new(valid_card).card_type.should eq(@card_classification)
+        CardType.new(valid_card).name.should eq(@card_classification)
       end
     end
 
     it "for a invalid Visa card it should not classify it as a Visa cards" do
-      Card.new(@in_valid_card).card_type.should_not eq(@card_classification)
+      CardType.new(@in_valid_card).name.should_not eq(@card_classification)
     end
   end
   describe "for the MasterCard" do
@@ -32,12 +32,12 @@ describe "Card classifications" do
 
     it "for a valid MasterCard card it should classify it as a MasterCard cards" do
       @valid_cards.each do |valid_card|
-        Card.new(valid_card).card_type.should eq(@card_classification)
+        CardType.new(valid_card).name.should eq(@card_classification)
       end
     end
 
     it "for a invalid MasterCard card it should not classify it as a MasterCard cards" do
-      Card.new(@in_valid_card).card_type.should_not eq(@card_classification)
+      CardType.new(@in_valid_card).name.should_not eq(@card_classification)
     end
   end
   describe "for the Discover" do
@@ -49,12 +49,12 @@ describe "Card classifications" do
 
     it "for a valid Discover card it should classify it as a Discover cards" do
       @valid_cards.each do |valid_card|
-        Card.new(valid_card).card_type.should eq(@card_classification)
+        CardType.new(valid_card).name.should eq(@card_classification)
       end
     end
 
     it "for a invalid Discover card it should not classify it as a Discover cards" do
-      Card.new(@in_valid_card).card_type.should_not eq(@card_classification)
+      CardType.new(@in_valid_card).name.should_not eq(@card_classification)
     end
   end
   describe "for the AMEX " do
@@ -66,12 +66,12 @@ describe "Card classifications" do
 
     it "for a valid AMEX card it should classify it as a AMEX cards" do
       @valid_cards.each do |valid_card|
-        Card.new(valid_card).card_type.should eq(@card_classification)
+        CardType.new(valid_card).name.should eq(@card_classification)
       end
     end
 
     it "for a invalid AMEX card it should not classify it as a AMEX cards" do
-      Card.new(@in_valid_card).card_type.should_not eq(@card_classification)
+      CardType.new(@in_valid_card).name.should_not eq(@card_classification)
     end
   end
 end
