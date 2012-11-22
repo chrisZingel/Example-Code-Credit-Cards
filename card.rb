@@ -16,6 +16,10 @@ class Validation
     @card =card
   end
 
+  def card_is_valid?
+    luhn_algorithm && validated_card_type?
+  end
+
   def luhn_algorithm
     total=0
     card_number_to_array.reverse.each_with_index {|val, index| 
@@ -25,6 +29,11 @@ class Validation
   end
 
   private
+  def validated_card_type?
+    CardType.new(@card).valid_card_type?
+  end
+
+
   def adjust_for_digit_than_9(val)
     (val > 9) ? ( 1 + val - 10 ) : val
   end
@@ -56,6 +65,10 @@ class CardType
     else
       return nil
     end
+  end
+
+  def valid_card_type?
+    !name.nil?
   end
 
   private
