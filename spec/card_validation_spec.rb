@@ -1,10 +1,17 @@
 require "#{File.dirname(__FILE__)}/spec_helper"
 
-describe "Card classifications" do
-    before do
-      @valid_cards = ["4234567890123",
-                      "4234567890123456" ]
-      @in_valid_card ="invalid_account_number"
-      @card_classification = "Visa"
-    end
+describe "Card Validation" do
+  before do
+    @valid_card = "4408 0412 3456 7893"
+    @invalid_card = "4417 1234 5678 9112"
+  end
+
+  it "for an invalidated card doesn't passes the Luhn algorithm" do
+    card =Card.new(@invalid_card) 
+    Validation.new(card).luhn_algorithm.should_not eq (true)
+  end
+  it "for a validated card passes the Luhn algorithm" do
+    card =Card.new(@valid_card) 
+    Validation.new(card).luhn_algorithm.should eq (true)
+  end
 end

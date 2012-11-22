@@ -10,10 +10,37 @@ class Card
   end
 end
 
-class CardType 
 
-  def initialize(card_number)
-    @card =Card.new(card_number)
+class Validation
+  def initialize(card)
+    @card =card
+  end
+
+  def luhn_algorithm
+    total=0
+    card_number_to_array.reverse.each_with_index {|val, index| 
+      total +=  (index == 0 || index % 2 == 0 ) ? val : adjust_for_digit_than_9(val * 2 )
+    }
+    (total % 10 ) == 0
+  end
+
+  private
+  def adjust_for_digit_than_9(val)
+    (val > 9) ? ( 1 + val - 10 ) : val
+  end
+
+  def card_number_to_array
+    card_number_to_array=[]
+    (0..@card.number.length - 1 ).each {|a| card_number_to_array.push(@card.number.send(:[],a).to_i) }
+    card_number_to_array
+  end
+
+end
+
+
+class CardType 
+  def initialize(card)
+    @card =card
   end
 
   def name
