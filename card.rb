@@ -8,10 +8,10 @@ class Card
   def initialize(card_number)
     @card_number = card_number.to_s.gsub(/\D/,"")
   end
-  def number
+  def card_number
     @card_number
   end 
-  def number=(val)
+  def card_number=(val)
     @card_number = val
   end
 

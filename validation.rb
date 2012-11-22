@@ -1,7 +1,7 @@
 require "#{File.dirname(__FILE__)}/card_type"
 
 module Validation
-  def to_s
+  def valid_description
     card_is_valid? == true ? "(valid)" : "(invalid)"
  end
 
@@ -25,7 +25,7 @@ module Validation
 
   def card_number_to_array
     card_number_to_array=[]
-    (0..number.length - 1 ).each {|a| card_number_to_array.push(number.send(:[],a).to_i) }
+    (0..card_number.length - 1 ).each {|a| card_number_to_array.push(card_number.send(:[],a).to_i) }
     card_number_to_array
   end
 

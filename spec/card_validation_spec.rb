@@ -9,12 +9,12 @@ describe "Card Validation" do
 
   it  "for validated cards the return message is (valid)" do
     Card.any_instance.stub(:card_is_valid?).and_return(true)
-    Card.new("").to_s.should eq "(valid)"
+    Card.new("").valid_description.should eq "(valid)"
   end
 
   it  "for invalidated cards the return message is (valid)" do
     Card.any_instance.stub(:card_is_valid?).and_return(false)
-    Card.new("").to_s.should eq "(invalid)"
+    Card.new("").valid_description.should eq "(invalid)"
   end
   it "for an invalidated card doesn't passes the Luhn algorithm" do
     Card.new(@invalid_card).luhn_algorithm.should_not eq (true)
