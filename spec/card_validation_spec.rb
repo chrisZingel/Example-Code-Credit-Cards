@@ -7,6 +7,17 @@ describe "Card Validation" do
     @in_valid_card_with_vaild_luhn = "9408 0412 3456 7843"
   end
 
+  it  "for validated cards the return message is (valid)" do
+    Validation.any_instance.stub(:card_is_valid?).and_return(true)
+    card =Card.new("") 
+    Validation.new(card).to_s.should eq "(valid)"
+  end
+
+  it  "for invalidated cards the return message is (valid)" do
+    Validation.any_instance.stub(:card_is_valid?).and_return(false)
+    card =Card.new("") 
+    Validation.new(card).to_s.should eq "(invalid)"
+  end
   it "for an invalidated card doesn't passes the Luhn algorithm" do
     card =Card.new(@invalid_card) 
     Validation.new(card).luhn_algorithm.should_not eq (true)

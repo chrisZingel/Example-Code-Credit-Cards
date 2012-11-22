@@ -10,11 +10,14 @@ class Card
   end
 end
 
-
 class Validation
   def initialize(card)
     @card =card
   end
+
+  def to_s
+    card_is_valid? == true ? "(valid)" : "(invalid)"
+ end
 
   def card_is_valid?
     luhn_algorithm && validated_card_type?
@@ -63,12 +66,12 @@ class CardType
     when begins_with?("34", "37") && length_being?(15)
       return   "AMEX"
     else
-      return nil
+      return "Unknown"
     end
   end
 
   def valid_card_type?
-    !name.nil?
+    !(name == "Unknown")
   end
 
   private
