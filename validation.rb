@@ -2,8 +2,8 @@ require "#{File.dirname(__FILE__)}/card_type"
 
 module Validation
   def valid_description
-    card_is_valid? == true ? "(valid)" : "(invalid)"
- end
+    card_is_valid?  ? "(valid)" : "(invalid)"
+  end
 
   def card_is_valid?
     luhn_algorithm && valid_card_type?

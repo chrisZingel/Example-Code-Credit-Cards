@@ -9,11 +9,11 @@ describe "Card classifications" do
       @card_classification = "Visa"
     end
 
-    it "for a valid Visa card it should classify it as a Visa cards" do
-      @valid_cards.each do |valid_card|
-        Card.new(valid_card).name.should eq(@card_classification)
-      end
-    end
+    # it "for a valid Visa card it should classify it as a Visa cards" do
+    #   @valid_cards.each do |valid_card|
+    #     Card.new(valid_card).name.should eq(@card_classification)
+    #   end
+    # end
 
     it "for an invalid Visa card it should not classify it as a Visa cards" do
       Card.new(@in_valid_card).name.should_not eq(@card_classification)
